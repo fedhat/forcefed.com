@@ -1,0 +1,127 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Force F.E.D. LLC</title>
+  <meta name="description" content="Force F.E.D. LLC, the Freakin' Engineering Department: an independent creative organization specializing in engineering, entertainment, experimentation, and other activities as assigned.">
+  <link rel="icon" type="image/png" href="favicon.png">
+  <link rel="apple-touch-icon" href="favicon.png">
+  <link rel="canonical" href="https://forcefed.com/">
+  <meta property="og:title" content="Force F.E.D. LLC">
+  <meta property="og:description" content="Freakin' Engineering Department. Making things. Mostly on purpose.">
+  <meta property="og:url" content="https://forcefed.com/">
+  <meta property="og:image" content="https://forcefed.com/logo.webp">
+  <meta property="og:type" content="website">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@500;700&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;1,8..60,400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css?v=3">
+</head>
+<body>
+  <header class="hero">
+    <div class="hero-inner">
+      <img class="logo" src="logo.webp" width="1254" height="1254" alt="Force F.E.D. badge held up by a figure in a fedora">
+      <h1 class="wordmark">Force <span class="dots">F.E.D.</span></h1>
+      <p class="acronym">Freakin&rsquo; Engineering Department</p>
+      <p class="tagline" id="tagline">Making things. Mostly on purpose.</p>
+    </div>
+  </header>
+
+  <main>
+    <section class="section" id="about">
+      <h2>About</h2>
+      <p>
+        An independent creative organization specializing in engineering, entertainment,
+        experimentation, and other activities as assigned.
+      </p>
+      <dl class="facts">
+        <div><dt>Current staffing</dt><dd>Adequate.</dd></div>
+        <div><dt>Management</dt><dd>Questionable.</dd></div>
+        <div><dt>Mission</dt><dd>Workin&rsquo; on it.</dd></div>
+      </dl>
+    </section>
+
+    <section class="section" id="contact">
+      <h2>Contact</h2>
+      <p>
+        For business inquiries, write to
+        <a href="mailto:contact@forcefed.com">contact@forcefed.com</a>.
+      </p>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <p>&copy; <span id="year">2026</span> Force F.E.D. LLC. All rights reserved.</p>
+  </footer>
+
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    // Rotating taglines: the first always leads a cycle; the rest are shuffled
+    // without replacement until all have shown, then the cycle restarts.
+    (function () {
+      var TAGLINES = [
+        "Making things. Mostly on purpose.",
+        "Setting standards nobody asked for.",
+        "We've thought of everything. Except that.",
+        "Excellence through trial, error, and denial.",
+        "Our brilliance speaks for itself. Non-stop.",
+        "Confidence far exceeding expectations.",
+        "Our reputation precedes us. We apologize.",
+        "We have a plan. It's adorable.",
+        "If it ain't broke, we can fix it.",
+        "Overengineering the unnecessary since day one.",
+        "Please remain impressed.",
+        "We're so great, we take our breath away.",
+        "Officially recognized by ourselves.",
+        "We mostly know exactly what we're doing. Mostly.",
+        "No idea too small to overcomplicate.",
+        "A proud tradition of recent accomplishments.",
+        "Pioneering solutions to imaginary problems.",
+        "Exceeding our own low expectations."
+      ];
+      var HOLD_MS = 10000;
+      var FADE_MS = 600;
+
+      var el = document.getElementById('tagline');
+      var queue = [];
+
+      function shuffle(arr) {
+        for (var i = arr.length - 1; i > 0; i--) {
+          var j = Math.floor(Math.random() * (i + 1));
+          var t = arr[i]; arr[i] = arr[j]; arr[j] = t;
+        }
+        return arr;
+      }
+
+      function nextCycle() {
+        queue = [TAGLINES[0]].concat(shuffle(TAGLINES.slice(1)));
+      }
+
+      function next() {
+        if (queue.length === 0) nextCycle();
+        return queue.shift();
+      }
+
+      // The first tagline is already in the HTML; consume it so the cycle continues from it.
+      nextCycle();
+      queue.shift();
+
+      var reduceMotion = window.matchMedia &&
+        window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+      function show(text) {
+        if (reduceMotion) { el.textContent = text; return; }
+        el.classList.add('is-fading');
+        setTimeout(function () {
+          el.textContent = text;
+          el.classList.remove('is-fading');
+        }, FADE_MS);
+      }
+
+      setInterval(function () { show(next()); }, HOLD_MS);
+    })();
+  </script>
+</body>
+</html>
