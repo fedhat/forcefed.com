@@ -4,15 +4,55 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Not found · Force F.E.D. LLC</title>
+  <meta name="description" content="Page not found.">
   <link rel="icon" type="image/png" href="/favicon.png">
-  <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@500;700&family=Source+Serif+4:opsz,wght@8..60,400&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="/styles.css?v=3">
+  <link rel="apple-touch-icon" href="/favicon.png">
+  <link rel="canonical" href="https://forcefed.com/404.html">
+  <meta property="og:title" content="Not found · Force F.E.D. LLC">
+  <meta property="og:description" content="Page not found.">
+  <meta property="og:url" content="https://forcefed.com/404.html">
+  <meta property="og:image" content="https://forcefed.com/logo.webp">
+  <meta property="og:type" content="website">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@500;700&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;1,8..60,400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/styles.css?v=4">
 </head>
 <body>
-  <main style="text-align:center; padding-top:5rem;">
-    <h2>Case file 404</h2>
-    <p class="tagline">This page does not exist. Officially, it never did.</p>
-    <p><a href="/">Return to headquarters</a></p>
+  <nav class="nav" aria-label="Main">
+    <a class="nav-brand" href="/">
+      <img src="/favicon.png" width="28" height="28" alt="">
+      <span>Force <span class="dots">F.E.D.</span></span>
+    </a>
+    <ul class="nav-links">
+      <li><a href="/">Home</a></li>
+      <li><a href="/about/">About</a></li>
+      <li><a href="/projects/">Projects</a></li>
+      <li><a href="/contact/">Contact</a></li>
+    </ul>
+  </nav>
+
+  <header class="page-head">
+    <h1>Case file 404</h1>
+    <p class="lede">This page does not exist. Officially, it never did.</p>
+  </header>
+  <main>
+    <section class="section" style="text-align:center">
+      <p><a class="button" href="/">Return to headquarters</a></p>
+    </section>
   </main>
+
+  <footer class="footer">
+    <p>&copy; <span class="year">2026</span> Force F.E.D. LLC &middot; Los Angeles, California</p>
+    <p class="footer-links">
+      <a href="/about/">About</a> &middot;
+      <a href="/projects/">Projects</a> &middot;
+      <a href="/contact/">Contact</a> &middot;
+      <a href="/privacy/">Privacy</a>
+    </p>
+  </footer>
+  <script>
+    document.querySelectorAll('.year').forEach(function (e) { e.textContent = new Date().getFullYear(); });
+  </script>
 </body>
 </html>

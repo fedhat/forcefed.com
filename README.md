@@ -4,8 +4,9 @@ Static website for Force F.E.D. LLC, hosted on GitHub Pages.
 
 ## Files
 
-- `index.html` – the landing page (badge logo is inline SVG)
-- `styles.css` – styles
+- `index.html` – home page with the logo and rotating taglines
+- `about/`, `projects/`, `contact/`, `privacy/` – inner pages (each is an `index.html`)
+- `styles.css` – styles shared by all pages
 - `logo.webp` – the logo
 - `favicon.png` – tab icon (cropped from the logo)
 - `404.html` – not-found page
